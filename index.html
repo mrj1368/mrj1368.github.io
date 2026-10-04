@@ -1,6 +1,287 @@
-<html>
-<title>LDAI</title>
-<body>
-<h1>LDAI</h1>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دستیار هوشمند تشخیص ژنتیک</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Vazirmatn', sans-serif; }
+        body {
+            background: linear-gradient(160deg, #0b1120 0%, #111d35 60%, #0b1120 100%);
+        }
+        .glow {
+            text-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+        }
+        .grad-text {
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all .3s ease;
+        }
+        .card:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            transform: translateY(-4px);
+        }
+        .btn {
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            transition: all .3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -8px rgba(14, 165, 233, 0.5);
+        }
+        .dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity: 1; }
+            50% { opacity: .3; }
+        }
+        .soft-blur {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(90px);
+            opacity: .18;
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-800/60 backdrop-blur-md bg-slate-950/40 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v18M15 3v18M4 8h16M4 16h16"/>
+                    </svg>
+                </div>
+                <span class="font-bold grad-text">ژن‌دستیار</span>
+            </div>
+            <span class="text-xs text-gray-400 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/25">
+                <span class="w-1.5 h-1.5 bg-green-400 rounded-full dot"></span>
+                در حال توسعه
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative max-w-5xl mx-auto px-5 pt-20 pb-24 text-center">
+        <div class="soft-blur w-80 h-80 bg-sky-500 top-10 right-0"></div>
+        <div class="soft-blur w-72 h-72 bg-purple-500 bottom-0 left-0"></div>
+
+        <div class="relative z-10">
+            <span class="inline-block text-xs text-sky-400 bg-sky-500/10 border border-sky-500/25 rounded-full px-4 py-1.5 mb-6">
+                دستیار متخصص، نه جایگزین او
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 glow">
+                دستیار هوشمند <span class="grad-text">تشخیص ژنتیک</span>
+            </h1>
+
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+                آزمایش‌های فرد، نشانه‌های بالینی و شجره‌نامه‌ی خانوادگی را وارد کنید؛
+                سیستم با کمک هوش مصنوعی پیشنهاد می‌دهد چه آزمایش‌هایی لازم است
+                و چه تشخیص‌هایی محتمل‌ترند — تا متخصص سریع‌تر و مطمئن‌تر تصمیم بگیرد.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="#contact" class="btn text-white px-7 py-3 rounded-xl font-semibold text-sm">
+                    اطلاع از زمان راه‌اندازی
+                </a>
+                <a href="#how" class="px-7 py-3 rounded-xl font-semibold text-sm text-gray-300 border border-slate-700 hover:border-sky-500/50 hover:text-sky-400 transition">
+                    چطور کار می‌کند؟
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="max-w-6xl mx-auto px-5 pb-24">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-3 text-gray-200">چالش امروز</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    انتخاب آزمایش‌های ژنتیکی مناسب، تفسیر شجره‌نامه‌ی خانوادگی و
+                    اولویت‌بندی تشخیص‌های محتمل زمان‌بر و تخصصی است؛ به‌ویژه وقتی
+                    نشانه‌ها مبهم یا نادر باشند.
+                </p>
+            </div>
+            <div class="card rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-3 grad-text">راه‌حل ما</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    سیستم با ترکیب داده‌های بالینی، آزمایش‌ها و شجره‌نامه،
+                    الگوهای پنهان را شناسایی می‌کند و به‌عنوان دستیار،
+                    پیشنهادها و اولویت‌های تشخیصی را در اختیار متخصص می‌گذارد.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="max-w-6xl mx-auto px-5 pb-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            فرآیند <span class="grad-text">کارکرد</span>
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-5">
+            <!-- Step 1 -->
+            <div class="card rounded-2xl p-6 text-center">
+                <div class="w-11 h-11 mx-auto mb-4 rounded-full bg-sky-500/15 border border-sky-500/35 flex items-center justify-center text-sky-400 font-bold">۱</div>
+                <h4 class="font-bold mb-2">ورود داده‌ها</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    آزمایش‌های موجود، نشانه‌های بالینی و سابقه‌ی خانوادگی ثبت می‌شود.
+                </p>
+            </div>
+            <!-- Step 2 -->
+            <div class="card rounded-2xl p-6 text-center">
+                <div class="w-11 h-11 mx-auto mb-4 rounded-full bg-purple-500/15 border border-purple-500/35 flex items-center justify-center text-purple-400 font-bold">۲</div>
+                <h4 class="font-bold mb-2">تحلیل شجره‌نامه</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    الگوی توارث و ارتباطات خانوادگی به‌صورت خودکار بررسی می‌شود.
+                </p>
+            </div>
+            <!-- Step 3 -->
+            <div class="card rounded-2xl p-6 text-center">
+                <div class="w-11 h-11 mx-auto mb-4 rounded-full bg-cyan-500/15 border border-cyan-500/35 flex items-center justify-center text-cyan-400 font-bold">۳</div>
+                <h4 class="font-bold mb-2">پیشنهاد آزمایش</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    لیست آزمایش‌های پیشنهادی با اولویت و دلیل هرکدام ارائه می‌شود.
+                </p>
+            </div>
+            <!-- Step 4 -->
+            <div class="card rounded-2xl p-6 text-center">
+                <div class="w-11 h-11 mx-auto mb-4 rounded-full bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-center text-emerald-400 font-bold">۴</div>
+                <h4 class="font-bold mb-2">تشخیص‌های محتمل</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    تشخیص‌های احتمالی همراه با میزان اطمینان به متخصص پیشنهاد می‌شود.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="max-w-6xl mx-auto px-5 pb-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            چه چیزی <span class="grad-text">دریافت می‌کنید؟</span>
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="card rounded-2xl p-7">
+                <div class="w-12 h-12 rounded-xl bg-sky-500/15 border border-sky-500/25 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold mb-2 text-lg">پیشنهاد آزمایش هدفمند</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    به‌جای درخواست آزمایش‌های پراکنده، سیستم آزمایش‌های مرتبط و ضروری را اولویت‌بندی می‌کند.
+                </p>
+            </div>
+
+            <div class="card rounded-2xl p-7">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold mb-2 text-lg">تحلیل شجره‌نامه</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    الگوی توارث در خانواده شناسایی و به تشخیص دقیق‌تر کمک می‌کند.
+                </p>
+            </div>
+
+            <div class="card rounded-2xl p-7">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold mb-2 text-lg">تشخیص‌های محتمل</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    فهرست تشخیص‌های احتمالی همراه با سطح اطمینان، برای بررسی و تصمیم‌گیری متخصص.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assistant Note -->
+    <section class="max-w-4xl mx-auto px-5 pb-24">
+        <div class="card rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+            <div class="soft-blur w-72 h-72 bg-sky-500 -top-20 -right-20"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">
+                    دستیار <span class="grad-text">متخصص</span>، نه جایگزین او
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+                    این سیستم تصمیم نهایی نمی‌گیرد؛ فقط اطلاعات را تحلیل می‌کند،
+                    آزمایش‌های پیشنهادی را اولویت‌بندی می‌کند و تشخیص‌های محتمل را نشان می‌دهد
+                    تا متخصص با دید بازتر و سریع‌تر تصمیم بگیرد. مسئولیت نهایی همیشه بر عهده‌ی پزشک است.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="border-t border-slate-800/60 py-14">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <div>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <div class="w-9 h-9 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v18M15 3v18M4 8h16M4 16h16"/>
+                            </svg>
+                        </div>
+                        <span class="font-bold grad-text">ژن‌دستیار</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        دستیار هوشمند تشخیص ژنتیک — در حال توسعه
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-sm">ارتباط با ما</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span>info@geneyar.ai</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-sm">اطلاع از راه‌اندازی</h4>
+                    <p class="text-gray-500 text-xs mb-3">ایمیل خود را وارد کنید تا در زمان راه‌اندازی باخبر شوید.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="ایمیل شما" 
+                               class="flex-1 bg-slate-800/60 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-sky-500/60 transition">
+                        <button class="btn text-white text-sm font-semibold px-4 py-2 rounded-lg">ثبت</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-px bg-gradient-to-l from-transparent via-slate-700 to-transparent mb-6"></div>
+
+            <p class="text-center text-xs text-gray-500">
+                © ۱۴۰۳ ژن‌دستیار — تمامی حقوق محفوظ است.
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
